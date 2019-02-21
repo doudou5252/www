@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from user.models import User
 import re
 # Create your views here.
@@ -9,7 +9,7 @@ def register(request):
     '''显示注册页面'''
     return render(request, 'register.html')
 
-def register(request):
+def register_handle(request):
     '''进行注册的处理'''
     # 接受数据
     username = request.POST.get('user_name')
