@@ -23,7 +23,8 @@
 				<a href="#">登录</a>
 			</div>
 			<div class="reg_form clearfix">
-				<form>
+				<form method="post" action="/usr/register_handle">
+					{% csrf_token %}
 				<ul>
 					<li>
 						<label>用户名:</label>

@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.urls import reverse
+from django.urls import reverse  # 反向解析
 from user.models import User
 import re
 # Create your views here.
@@ -38,7 +38,7 @@ def register_handle(request):
     user.is_active = 0
     user.save()
     # 返回应答 跳转到首页
-    return redirect(reverse('goods:index'))
+    return redirect(reverse('goods:index'))  # 注册成功,反向解析,跳转到首页
 
 
 
