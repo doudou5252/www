@@ -57,7 +57,7 @@ class RegisterView(View):
         token = token.decode()
 
         # 发邮件
-        subject = '我是豆豆啊'  # 邮件标题
+        subject = '我是豆豆啊%s'%(token)  # 邮件标题
         message = '邮件正文'  #
         sender = settings.EMAIL_FROM
         receiver = [email]
