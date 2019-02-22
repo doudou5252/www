@@ -2,7 +2,8 @@ from django.shortcuts import render, redirect
 from django.urls import reverse  # 反向解析
 from django.views.generic import View  # 通过类来进行视图的跳转
 from django.contrib.auth import authenticate, login  # 登录校验
-from django.http import HttpResponse # 引入响应
+from django.http import HttpResponse  # 引入响应
+from django.conf import settings  # 引入settings文件
 
 
 from user.models import User   # 用户模型类
@@ -46,6 +47,15 @@ class RegisterView(View):
         user = User.objects.create_user(username, email, password)
         user.is_active = 0
         user.save()
+
+        # 加密用户的身份信息，生成激活token
+        serializer = Serializer(settings.SECRET_KEY, 3600)
+        info = {'confirm': user.id}
+        token = serializer.dumps(info)  # bytes
+        token = token.decode()
+
+        # 发邮件
+        send_register_active_email.delay(email, username, token)
         # 返回应答 跳转到首页
         return redirect(reverse('goods:index'))  # 注册成功,反向解析,跳转到首页
 
@@ -111,7 +121,7 @@ class ActiveView(View):
     def get(self, request, token):
         '''进行用户激活'''
         # 进行解密，获取要激活的用户信息
-        serializer = Serializer(settings.SECRET_KEY, 3600)
+        serializer = Serializer(settings.SECRET_KEY, 3600)  # 3600 为过期时间
         try:
             info = serializer.loads(token)
             # 获取待激活用户的id
