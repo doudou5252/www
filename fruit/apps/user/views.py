@@ -53,15 +53,16 @@ class RegisterView(View):
         # 加密用户的身份信息，生成激活token
         serializer = Serializer(settings.SECRET_KEY, 3600)
         info = {'confirm': user.id}
-        token = serializer.dumps(info)  # bytes
-        token = token.decode()
+        token = serializer.dumps(info)  # bytes  字节流的数据
+        token = token.decode()  # 默认解码utf8
 
         # 发邮件
         subject = '我是豆豆啊%s'%(token)  # 邮件标题
         message = '邮件正文'  #
+        html_msg = '<h2> 我是msg </h2>'
         sender = settings.EMAIL_FROM
         receiver = [email]
-        send_mail(subject, message, sender, receiver)
+        send_mail(subject, html_msg, sender, receiver)
 
         # send_register_active_email.delay(email, username, token)
 
