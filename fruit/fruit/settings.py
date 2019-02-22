@@ -156,5 +156,5 @@ EMAIL_HOST_USER = '17756560797@163.com'
 # 在邮箱中设置的客户端授权密码
 EMAIL_HOST_PASSWORD = 'dou190824'
 # 收件人看到的发件人
-EMAIL_FROM = 'doudou invite you to open new world'
+EMAIL_FROM = '豆豆'
 
