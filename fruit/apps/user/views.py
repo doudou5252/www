@@ -4,9 +4,11 @@ from django.views.generic import View  # 通过类来进行视图的跳转
 from django.contrib.auth import authenticate, login  # 登录校验
 from django.http import HttpResponse  # 引入响应
 from django.conf import settings  # 引入settings文件
+from django.core.mail import send_mail  # 发送邮件
 
 
 from user.models import User   # 用户模型类
+from celery_tasks.tasks import send_register_active_email  # 引入发邮件的函数
 from itsdangerous import TimedJSONWebSignatureSerializer as Serializer  # 验证激活的
 from itsdangerous import SignatureExpired # 验证激活的
 import re  # 正则
@@ -55,7 +57,14 @@ class RegisterView(View):
         token = token.decode()
 
         # 发邮件
-        send_register_active_email.delay(email, username, token)
+        subject = 'doudou '  # 邮件标题
+        message = '邮件正文'  #
+        sender = settings.EMAIL_FROM
+        receiver = [email]
+        send_mail(subject, message, sender, receiver)
+
+        # send_register_active_email.delay(email, username, token)
+
         # 返回应答 跳转到首页
         return redirect(reverse('goods:index'))  # 注册成功,反向解析,跳转到首页
 
