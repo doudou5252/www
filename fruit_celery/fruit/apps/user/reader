@@ -1,0 +1,5 @@
+pip3 install itsdangerous  # 验证激活加密用的
+
+celery 任务队列 可以不堵塞
+pip3 install celery
+

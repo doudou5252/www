@@ -4,11 +4,10 @@ from django.core.mail import send_mail
 from django.conf import settings
 from celery import Celery
 import time
-# import os
-# import django
-# os.environ.setdefault("DJANGO_SETTINGS_MODULE", "fruit.settings")
-# django.setup()
-
+import os
+import django
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "fruit.settings")
+django.setup()
 # 创建一个Celery类的实例对象
 app = Celery('celery_task.tasks', broker='redis://192.168.17.129:6379/8')
 

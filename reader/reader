@@ -1,4 +1,23 @@
 yum mysql
 https://www.cnblogs.com/lgqboke/p/6873734.html
 
-sdsaddsadsaddsadsadsadsa
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+celery
+celery -A celery_tasks.tasks worker -l info
