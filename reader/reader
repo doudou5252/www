@@ -24,3 +24,6 @@ celery -A celery_tasks.tasks worker -l info
 
 redis
 pip3 install django-redis-sessions
+
+也可以使用django-redis
+pip3 install django-redis
