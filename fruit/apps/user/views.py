@@ -89,7 +89,7 @@ class LoginView(View):
         if not all([username, password]):
             return render(request, 'login.html', {'errmsg': '数据不完整'})
 
-        # 业务处理:登录校验  认证系统
+        # 业务处理:登录校验  认证系统  User.objects.get(username=username,password=password)
         user = authenticate(username=username, password=password)
         if user is not None:
             # 用户名密码输入正确
