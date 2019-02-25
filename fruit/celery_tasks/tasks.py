@@ -10,7 +10,7 @@ import time
 # django.setup()
 
 # 创建一个Celery类的实例对象
-app = Celery('celery_task.tasks', broker='redis://192.168.17.129:6379/8')
+app = Celery('celery_task.tasks', broker='redis://192.168.190.128:6379/8')
 
 # 定义任务函数
 # 定义任务函数
@@ -26,4 +26,4 @@ def send_register_active_email(to_email, username, token):
     html_message = '<h1>%s, 欢迎您成为天天生鲜注册会员</h1>请点击下面链接激活您的账户<br/><a href="http://127.0.0.1:8000/user/active/%s">http://127.0.0.1:8000/user/active/%s</a>' % (username, token, token)
 
     send_mail(subject, message, sender, receiver, html_message=html_message)
-    # time.sleep(5)
+    time.sleep(5)
