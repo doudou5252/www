@@ -77,6 +77,7 @@ class LoginView(View):
 
         # 使用模版
 
+
         return render(request, 'login.html', {'username': username, 'cheched': checked})
     def post(self, request):
         '''登录校验'''
