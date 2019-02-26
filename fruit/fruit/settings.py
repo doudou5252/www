@@ -162,7 +162,7 @@ EMAIL_FROM = '天天生鲜<17756560797@1''63.com>'
 CACHES = {
     "default": {
         "BACKEND": "django_redis.cache.RedisCache",
-        "LOCATION": "redis://192.168.190.128:6379/9",
+        "LOCATION": "redis://127.0.0.1:6379/9",
         "OPTIONS": {
             "CLIENT_CLASS": "django_redis.client.DefaultClient",
         }
@@ -170,5 +170,5 @@ CACHES = {
 }
 
 # 配置session存储
-SESSION_ENGINE = "django.contrib.sessions.backends.cache"
+SESSION_ENGINE = "django.contrib.sessions.backends.cache"  # 控制session存在哪里 存在缓存里
 SESSION_CACHE_ALIAS = "default"
