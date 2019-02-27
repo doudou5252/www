@@ -106,9 +106,9 @@ class LoginView(View):
 
                 if remember == 'on':
                     # 记住用户名
-                    request.set_cookie('username', username, max_age=7*24*3600)
+                    response.set_cookie('username', username, max_age=7*24*3600)
                 else:
-                    request.delete_cookie('username')
+                    response.delete_cookie('username')
 
                 # 返回 response
                 return response
