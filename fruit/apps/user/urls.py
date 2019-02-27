@@ -1,6 +1,6 @@
 from django.conf.urls import url
 from user import views
-from user.views import RegisterView, ActiveView, LoginView, UserInfoView, UserOrderView, AddressView
+from user.views import RegisterView, ActiveView, LoginView, UserInfoView, UserOrderView, AddressView, LogoutView
 
 app_name = 'user'  # 解决名称空间的问题
 urlpatterns = [
