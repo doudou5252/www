@@ -125,14 +125,14 @@ class ActiveView(View):
     def get(self, request, token):
         '''进行用户激活'''
         # 进行解密，获取要激活的用户信息
-        serializer = Serializer(settings.SECRET_KEY, 3600)  # 3600 为过期时间
+        # serializer = Serializer(settings.SECRET_KEY, 3600)  # 3600 为过期时间
         try:
-            info = serializer.loads(token)
-            # 获取待激活用户的id
-            user_id = info['confirm']
+            # info = serializer.loads(token)
+            # # 获取待激活用户的id
+            # user_id = info['confirm']
 
             # 根据id获取用户信息
-            user = User.objects.get(id=user_id)
+            user = User.objects.get(id=token)
             user.is_active = 1
             user.save()
 
