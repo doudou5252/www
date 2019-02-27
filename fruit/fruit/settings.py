@@ -156,7 +156,7 @@ EMAIL_HOST_USER = '17756560797@163.com'
 # 在邮箱中设置的客户端授权密码
 EMAIL_HOST_PASSWORD = 'dou1908242456'
 # 收件人看到的发件人
-EMAIL_FROM = '天天生鲜<17756560797@1''63.com>'
+EMAIL_FROM = '天天生鲜<17756560797@163.com>'
 
 # Django的缓存配置
 CACHES = {

@@ -1,17 +1,17 @@
-安装 python 3.72
+一  .安装 python 3.72
 1.安装依赖包
 yum -y groupinstall "Development tools"
 yum -y install zlib-devel bzip2-devel openssl-devel ncurses-devel sqlite-devel readline-devel tk-devel gdbm-devel db4-devel libpcap-devel xz-devel
-
+yum install libffi-devel -y
 2下载
 wget https://www.python.org/ftp/python/3.7.2/Python-3.7.2.tar.xz
 
 3 mkdir /usr/local/python3
 
 4
-mv Python-3.6.2.tar.xz /usr/local/python3
-tar -xvJf  Python-3.6.2.tar.xz
-cd Python-3.6.2
+mv Python-3.7.2.tar.xz /usr/local/python3
+tar -xvJf  Python-3.7.2.tar.xz
+cd Python-3.7.2
 ./configure --prefix=/usr/local/python3
 make
 make install
@@ -22,3 +22,5 @@ ln -s /usr/local/python3/bin/pip3 /usr/bin/pip3
 vi /usr/bin/yum
 vi /usr/libexec/urlgrabber-ext-down
 把#! /usr/bin/python修改为#! /usr/bin/python2（配置文件第一行）
+
+二,安装虚拟环境
