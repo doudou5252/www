@@ -14,6 +14,25 @@ from itsdangerous import SignatureExpired # 验证激活的
 import re  # 正则
 # Create your views here.
 
+# /usr/center
+class UserInfoView(View):
+    '''用户中心-信息页'''
+    def get(self, request):
+        """显示"""
+        return render(request, 'user_center_info.html')
+
+class UserOrderView(View):
+    '''用户中心-订单页'''
+    def get(self, request):
+        """显示"""
+        return render(request, 'user_center_order.html')
+
+class AddressView(View):
+    '''用户中心-地址页'''
+    def get(self, request):
+        """显示"""
+        return render(request, 'user_center_site.html')
+
 # usr/register
 class RegisterView(View):
     '''注册'''
