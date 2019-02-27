@@ -52,7 +52,7 @@ class UserInfoView(LoginRequiredMixin, View):
         history_key = 'history_%d'%user.id
 
         # 获取用户最新浏览的5个商品的id
-        sku_ids = con.lrange(history_key, 0, 4) # [2,3,1]
+        sku_ids = con.lrange(history_key, 0, 4)  # [2,3,1]
 
         # 从数据库中查询用户浏览的商品的具体信息
         # goods_li = GoodsSKU.objects.filter(id__in=sku_ids)
@@ -70,9 +70,9 @@ class UserInfoView(LoginRequiredMixin, View):
             goods_li.append(goods)
 
         # 组织上下文
-        context = {'page':'user',
-                   'address':address,
-                   'goods_li':goods_li}
+        context = {'page': 'user',
+                   'address': address,
+                   'goods_li': goods_li}
 
         # 除了你给模板文件传递的模板变量之外，django框架会把request.user也传给模板文件
         return render(request, 'user_center_info.html', context)

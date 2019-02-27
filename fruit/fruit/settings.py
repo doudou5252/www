@@ -172,3 +172,6 @@ CACHES = {
 # 配置session存储
 SESSION_ENGINE = "django.contrib.sessions.backends.cache"  # 控制session存在哪里 存在缓存里
 SESSION_CACHE_ALIAS = "default"
+
+# 配置登录url地址
+LOGIN_URL = '/user/login'  # /accounts/login
